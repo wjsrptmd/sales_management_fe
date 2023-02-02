@@ -2,7 +2,7 @@ import React from "react";
 import "page/steller.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { test } from "api";
+const { test, login } = require("../../api.js");
 
 export default function LoginPage() {
   // const [data, setData] = useState(null);
@@ -31,7 +31,7 @@ export default function LoginPage() {
       test()
         .then(function (response) {
           // 성공한 경우 실행
-          console.log(response.data['message']);
+          console.log(response.data["message"]);
         })
         .catch(function (error) {
           // 에러인 경우 실행
@@ -39,6 +39,18 @@ export default function LoginPage() {
         });
       navigate("/mainPage");
     }
+  };
+
+  const userLogin = () => {
+    login()
+      .then(function (response) {
+        // 성공한 경우 실행
+        console.log(response.data["message"]);
+      })
+      .catch(function (error) {
+        // 에러인 경우 실행
+        console.log(error);
+      });
   };
 
   return (
@@ -66,7 +78,7 @@ export default function LoginPage() {
           ></input>
         </div>
         <div>
-          <button className="btn btn-primary" onClick={goMainPage}>
+          <button className="btn btn-primary" onClick={userLogin}>
             로그인
           </button>
         </div>
