@@ -1,10 +1,10 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function MainPage() {
   const navigate = useNavigate();
   const goLoginPage = () => {
-    navigate("/");
+    navigate('/');
   };
   return (
     <div className="MainPage">

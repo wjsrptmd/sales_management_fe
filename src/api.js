@@ -6,9 +6,6 @@ const instance = axios.create({
   withCredentials: true,
 });
 
-// 인스턴스가 생성 된 후 기본값 변경
-// instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-
 const test = () => {
   console.log('test');
   return instance.get('/');
