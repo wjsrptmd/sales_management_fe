@@ -6,13 +6,12 @@ const instance = axios.create({
   withCredentials: true,
 });
 
-const test = () => {
-  console.log('test');
-  return instance.get('/');
-};
-
 const login = () => {
   return instance.post('/login');
 };
 
-export { test, login };
+const checkAuthorization = () => {
+  return instance.get('/token/authorization');
+};
+
+export { login, checkAuthorization };
