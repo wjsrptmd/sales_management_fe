@@ -6,8 +6,11 @@ const instance = axios.create({
   withCredentials: true,
 });
 
-const login = () => {
-  return instance.post('/login');
+const login = (userId, userPw) => {
+  return instance.post('/login', {
+    id: userId,
+    pw: userPw,
+  });
 };
 
 const checkAuthorization = () => {

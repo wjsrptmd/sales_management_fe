@@ -10,7 +10,7 @@ export default function LoginPage() {
 
   const navigate = useNavigate();
   const userLogin = () => {
-    login()
+    login(userId, userPw)
       .then(function (response) {
         // 성공한 경우 실행
         console.log(response.data);
@@ -40,7 +40,7 @@ export default function LoginPage() {
         <div className="form-group">
           <input
             className="form-control"
-            type="text"
+            type="password"
             placeholder="비밀번호를 입력해 주세요."
             value={userPw || ''}
             onChange={(e) => setPw(e.target.value)}
