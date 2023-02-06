@@ -1,10 +1,11 @@
 import React from 'react';
-import 'page/steller.css';
+import './steller.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 const { login } = require('../api.js');
 
 export default function LoginPage() {
+  console.log('login');
   const [userId, setId] = useState(undefined);
   const [userPw, setPw] = useState(undefined);
 

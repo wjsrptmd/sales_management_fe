@@ -1,4 +1,5 @@
 //계승의프로젝트
+import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import RootPage from './page/RootPage';
@@ -11,8 +12,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path={'/'} element={<RootPage />}></Route>
-          <Route path={'/login'} element={<LoginPage />}></Route>
-          <Route path={'/mainPage'} element={<MainPage />}></Route>
+          <Route path={'/LoginPage'} element={<LoginPage />}></Route>
+          <Route path={'/MainPage'} element={<MainPage />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

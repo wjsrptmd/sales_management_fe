@@ -5,6 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+// const rootElement = document.getElementById('wrong-id');
+// const root = ReactDOM.createRoot(rootElement);
+console.log('index 입니다.');
 root.render(
   <App />
   // <React.StrictMode>
