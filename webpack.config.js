@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -31,7 +32,6 @@ module.exports = {
     filename: 'bundle.js',
     sourceMapFilename: '[name].js.map',
   },
-
   resolve: {
     modules: ['node_modules'],
     extensions: ['.js', '.json', '.jsx', '.css'],
@@ -40,5 +40,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html', // 생성한 템플릿 파일
     }),
+    new NodePolyfillPlugin(),
   ],
 };

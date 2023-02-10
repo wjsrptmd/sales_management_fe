@@ -13,8 +13,12 @@ const login = (userId, userPw) => {
   });
 };
 
+const getSalt = () => {
+  return instance.get('/login/salt');
+};
+
 const checkAuthorization = () => {
   return instance.get('/token/authorization');
 };
 
-export { login, checkAuthorization };
+export { login, checkAuthorization, getSalt };
