@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './steller.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-const { login, getSalt } = require('../api.js');
+const { login, getSalt, signup } = require('../api.js');
 const { createHashedPassword } = require('../util/pwCreater');
 
 export default function LoginPage() {
@@ -13,7 +13,6 @@ export default function LoginPage() {
 
   const hashedPassword = async (originSalt) => {
     const { password, salt } = await createHashedPassword(userPw, originSalt);
-    console.log(`hashedPassword : ${password}, salt : ${salt}`);
     return { password, salt };
   };
 
@@ -29,11 +28,25 @@ export default function LoginPage() {
       });
   };
 
+  const signupUser = async () => {
+    try {
+      const { password, salt } = await createHashedPassword(userPw);
+      const res = await signup(userId, password, salt);
+      const result = res.data['result'];
+      if (result == 'success') {
+        console.log('success signup');
+      } else {
+        const message = res.data['message'];
+        console.log(message);
+        // TODO : dialog 처리
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const userLogin = async () => {
     try {
-      // const { password, salt } = await createHashedPassword(userPw);
-      // console.log(`password: ${password}`);
-      // console.log(`salt: ${salt}`);
       const saltRes = await getSalt();
       const originSalt = saltRes.data['salt'];
       console.log(`받아온 salt ${originSalt}`);
@@ -84,6 +97,9 @@ export default function LoginPage() {
         <div>
           <button className="btn btn-primary" onClick={userLogin}>
             로그인
+          </button>
+          <button className="btn btn-primary" onClick={signupUser}>
+            회원가입
           </button>
         </div>
       </div>

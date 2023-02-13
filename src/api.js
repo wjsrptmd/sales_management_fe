@@ -17,8 +17,16 @@ const getSalt = () => {
   return instance.get('/login/salt');
 };
 
+const signup = (id, hashedPassword, salt) => {
+  return instance.post('/login/signUp', {
+    id: `'${id}'`,
+    pw: `'${hashedPassword}'`,
+    salt: `'${salt}'`,
+  });
+};
+
 const checkAuthorization = () => {
   return instance.get('/token/authorization');
 };
 
-export { login, checkAuthorization, getSalt };
+export { login, checkAuthorization, getSalt, signup };
