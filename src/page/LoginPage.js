@@ -11,24 +11,12 @@ export default function LoginPage() {
 
   const navigate = useNavigate();
 
-  const hashedPassword = async (originSalt) => {
-    const { password, salt } = await createHashedPassword(userPw, originSalt);
-    return { password, salt };
-  };
+  async function hashedPassword(password, originSalt) {
+    const { pw, salt } = await createHashedPassword(password, originSalt);
+    return pw;
+  }
 
-  const saltFromServer = async () => {
-    return getSalt()
-      .then(function (response) {
-        return response.data['salt'];
-      })
-      .catch(function (error) {
-        // 에러인 경우 실행
-        console.log(error);
-        return undefined;
-      });
-  };
-
-  const signupUser = async () => {
+  async function userSignup() {
     try {
       const { password, salt } = await createHashedPassword(userPw);
       const res = await signup(userId, password, salt);
@@ -43,32 +31,32 @@ export default function LoginPage() {
     } catch (err) {
       console.log(err);
     }
-  };
+  }
 
-  const userLogin = async () => {
+  async function userLogin() {
     try {
-      const saltRes = await getSalt();
+      const saltRes = await getSalt(userId);
       const originSalt = saltRes.data['salt'];
-      console.log(`받아온 salt ${originSalt}`);
       if (originSalt) {
         const { password, salt } = await createHashedPassword(userPw, originSalt);
-        console.log(`hashedPassword : ${password}, salt : ${salt}`);
-        const loginRes = await login(salt, password);
-        const success = loginRes.data['success'];
-        if (success) {
+        const loginRet = await login(userId, password);
+        const result = loginRet.data['result'];
+        if (result == 'success') {
           navigate('/MainPage');
-        } else {
-          const message = loginRes.data['message'];
-          console.log(message);
+        } else if (result == 'passwordFail') {
+          console.log('password 가 틀렸습니다.');
           // TODO : dialog 처리
+        } else {
+          // error 처리. 실제로 일어날 수 없는 상황.
         }
       } else {
         console.log('아이디가 없습니다.');
+        // TODO : dialog 처리
       }
     } catch (err) {
       console.log(err);
     }
-  };
+  }
 
   return (
     <div className="LoginPage">
@@ -98,7 +86,7 @@ export default function LoginPage() {
           <button className="btn btn-primary" onClick={userLogin}>
             로그인
           </button>
-          <button className="btn btn-primary" onClick={signupUser}>
+          <button className="btn btn-primary" onClick={userSignup}>
             회원가입
           </button>
         </div>

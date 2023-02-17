@@ -20,5 +20,4 @@ npm i -D @babel/core @babel/preset-react babel-loader @babel/plugin-proposal-cla
 npm i --save-dev source-map-loader
 npm i --save-dev url crypto-browserify stream-http https-browserify os-browserify stream-browserify
 npm i crypto
-npm i mysql2
 ```

@@ -8,7 +8,6 @@ export default function RootPage() {
   useEffect(() => {
     checkAuthorization()
       .then(function (res) {
-        console.log(res.data['message']);
         const authorized = res.data['success'];
         if (authorized) {
           setTimeout(navigate('/MainPage'), 3000);

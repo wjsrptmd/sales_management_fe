@@ -13,20 +13,22 @@ const login = (userId, userPw) => {
   });
 };
 
-const getSalt = () => {
-  return instance.get('/login/salt');
+const getSalt = (userID) => {
+  return instance.post('/login/salt', {
+    id: userID,
+  });
 };
 
 const signup = (id, hashedPassword, salt) => {
   return instance.post('/login/signUp', {
-    id: `'${id}'`,
-    pw: `'${hashedPassword}'`,
-    salt: `'${salt}'`,
+    id: id,
+    pw: hashedPassword,
+    salt: salt,
   });
 };
 
 const checkAuthorization = () => {
-  return instance.get('/token/authorization');
+  return instance.get('/authorization');
 };
 
 export { login, checkAuthorization, getSalt, signup };
