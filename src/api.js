@@ -6,29 +6,33 @@ const instance = axios.create({
   withCredentials: true,
 });
 
-const login = (userId, userPw) => {
+function login(userId, userPw) {
   return instance.post('/login', {
     id: userId,
     pw: userPw,
   });
-};
+}
 
-const getSalt = (userID) => {
+function getSalt(userID) {
   return instance.post('/login/salt', {
     id: userID,
   });
-};
+}
 
-const signup = (id, hashedPassword, salt) => {
+function signup(id, hashedPassword, salt) {
   return instance.post('/login/signUp', {
     id: id,
     pw: hashedPassword,
     salt: salt,
   });
-};
+}
 
-const checkAuthorization = () => {
+function checkAuthorization() {
   return instance.get('/authorization');
-};
+}
 
-export { login, checkAuthorization, getSalt, signup };
+function renewalToken() {
+  return instance.get('/authorization/renewal');
+}
+
+export { login, checkAuthorization, getSalt, signup, renewalToken };
