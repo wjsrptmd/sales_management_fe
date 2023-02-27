@@ -6,6 +6,7 @@ import { startPolling } from './service/tokenUpdater';
 import RootPage from './page/RootPage';
 import LoginPage from './page/LoginPage';
 import MainPage from './page/MainPage';
+import SignUpPage from './page/SignUpPage';
 
 function App() {
   startPolling();
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path={'/'} element={<RootPage />}></Route>
           <Route path={'/LoginPage'} element={<LoginPage />}></Route>
+          <Route path={'/LoginPage/SignUpPage'} element={<SignUpPage />}></Route>
           <Route path={'/MainPage'} element={<MainPage />}></Route>
         </Routes>
       </BrowserRouter>

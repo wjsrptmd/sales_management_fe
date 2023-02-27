@@ -13,6 +13,12 @@ function login(userId, userPw) {
   });
 }
 
+function findUserId(userId) {
+  return instance.post('/login/id', {
+    id: userId,
+  });
+}
+
 function getSalt(userID) {
   return instance.post('/login/salt', {
     id: userID,
@@ -35,4 +41,4 @@ function renewalToken() {
   return instance.get('/authorization/renewal');
 }
 
-export { login, checkAuthorization, getSalt, signup, renewalToken };
+export { login, checkAuthorization, getSalt, signup, renewalToken, findUserId };

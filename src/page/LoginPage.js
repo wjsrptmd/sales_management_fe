@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './steller.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-const { login, getSalt, signup } = require('../api.js');
+const { login, getSalt } = require('../api.js');
 const { createHashedPassword } = require('../util/pwCreater');
 
 export default function LoginPage() {
@@ -16,21 +16,8 @@ export default function LoginPage() {
     return pw;
   }
 
-  async function userSignup() {
-    try {
-      const { password, salt } = await createHashedPassword(userPw);
-      const res = await signup(userId, password, salt);
-      const result = res.data['result'];
-      if (result == 'success') {
-        console.log('success signup');
-      } else {
-        const message = res.data['message'];
-        console.log(message);
-        // TODO : dialog 처리
-      }
-    } catch (err) {
-      console.log(err);
-    }
+  function moveToSignUpPage() {
+    navigate('/LoginPage/SignUpPage');
   }
 
   async function userLogin() {
@@ -60,7 +47,7 @@ export default function LoginPage() {
 
   return (
     <div className="LoginPage">
-      <div className="login">
+      <div className="custom_center">
         <div className="form-group">
           <h3>Login</h3>
         </div>
@@ -75,6 +62,7 @@ export default function LoginPage() {
         </div>
         <div className="form-group">
           <input
+            autoComplete="one-time-code"
             className="form-control"
             type="password"
             placeholder="비밀번호를 입력해 주세요."
@@ -86,7 +74,7 @@ export default function LoginPage() {
           <button className="btn btn-primary" onClick={userLogin}>
             로그인
           </button>
-          <button className="btn btn-primary" onClick={userSignup}>
+          <button className="btn btn-primary" onClick={moveToSignUpPage}>
             회원가입
           </button>
         </div>
