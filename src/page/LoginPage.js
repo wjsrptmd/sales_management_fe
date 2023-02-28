@@ -11,11 +11,6 @@ export default function LoginPage() {
 
   const navigate = useNavigate();
 
-  async function hashedPassword(password, originSalt) {
-    const { pw, salt } = await createHashedPassword(password, originSalt);
-    return pw;
-  }
-
   function moveToSignUpPage() {
     navigate('/LoginPage/SignUpPage');
   }

@@ -7,6 +7,7 @@ import RootPage from './page/RootPage';
 import LoginPage from './page/LoginPage';
 import MainPage from './page/MainPage';
 import SignUpPage from './page/SignUpPage';
+import SignUpPageEnd from './page/SignUpEndPage';
 
 function App() {
   startPolling();
@@ -17,6 +18,7 @@ function App() {
           <Route path={'/'} element={<RootPage />}></Route>
           <Route path={'/LoginPage'} element={<LoginPage />}></Route>
           <Route path={'/LoginPage/SignUpPage'} element={<SignUpPage />}></Route>
+          <Route path={'/LoginPage/SignUpPage/End'} element={<SignUpPageEnd />}></Route>
           <Route path={'/MainPage'} element={<MainPage />}></Route>
         </Routes>
       </BrowserRouter>
