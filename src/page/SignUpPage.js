@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import './steller.css';
+import '../css/steller';
 import { useNavigate } from 'react-router-dom';
 const { findUserId, signup } = require('../api.js');
 const { createHashedPassword } = require('../util/pwCreater');

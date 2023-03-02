@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import './steller.css';
+import '../css/loading';
+import '../css/custom';
 import { useNavigate } from 'react-router-dom';
 const { checkAuthorization } = require('../api.js');
 
@@ -20,5 +21,12 @@ export default function RootPage() {
       });
   });
 
-  return <div className="RootPage">대기중 ....</div>;
+  return (
+    <div className="custom_center">
+      <div className="loading-container">
+        <div className="loading"></div>
+        <div id="loading-text">loading</div>
+      </div>
+    </div>
+  );
 }

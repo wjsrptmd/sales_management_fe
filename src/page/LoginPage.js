@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import './steller.css';
+import '../css/steller.css';
+import '../css/custom.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 const { login, getSalt } = require('../api.js');
