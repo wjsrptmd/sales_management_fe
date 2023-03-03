@@ -42,4 +42,9 @@ module.exports = {
     }),
     new NodePolyfillPlugin(),
   ],
+  devServer: {
+    compress: true,
+    port: 8888,
+    historyApiFallback: true,
+  },
 };

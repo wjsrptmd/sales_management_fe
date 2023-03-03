@@ -8,11 +8,13 @@ import LoginPage from './page/LoginPage';
 import MainPage from './page/MainPage';
 import SignUpPage from './page/SignUpPage';
 import SignUpPageEnd from './page/SignUpEndPage';
+import ErrorPage from './page/ErrorPage';
+import NotFoundPage from './page/NotFoundPage';
 
 function App() {
   startPolling();
   return (
-    <div className="App">
+    <div>
       <BrowserRouter>
         <Routes>
           <Route path={'/'} element={<RootPage />}></Route>
@@ -20,6 +22,8 @@ function App() {
           <Route path={'/LoginPage/SignUpPage'} element={<SignUpPage />}></Route>
           <Route path={'/LoginPage/SignUpPage/End'} element={<SignUpPageEnd />}></Route>
           <Route path={'/MainPage'} element={<MainPage />}></Route>
+          <Route path={'/ErrorPage'} element={<ErrorPage />}></Route>
+          <Route path={'/*'} element={<NotFoundPage />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
