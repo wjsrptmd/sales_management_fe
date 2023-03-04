@@ -42,38 +42,36 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="LoginPage">
-      <div className="custom_center">
-        <div className="form-group">
-          <h3>Login</h3>
-        </div>
-        <div className="form-group">
-          <input
-            className="form-control"
-            type="text"
-            placeholder="ID 를 입력해 주세요."
-            value={userId || ''}
-            onChange={(e) => setId(e.target.value)}
-          ></input>
-        </div>
-        <div className="form-group">
-          <input
-            autoComplete="one-time-code"
-            className="form-control"
-            type="password"
-            placeholder="비밀번호를 입력해 주세요."
-            value={userPw || ''}
-            onChange={(e) => setPw(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <button className="btn btn-primary" onClick={userLogin}>
-            로그인
-          </button>
-          <button className="btn btn-primary" onClick={moveToSignUpPage}>
-            회원가입
-          </button>
-        </div>
+    <div className="custom_center">
+      <div className="form-group">
+        <h3 align="center">Login</h3>
+      </div>
+      <div className="form-group">
+        <input
+          className="form-control"
+          type="text"
+          placeholder="ID 를 입력해 주세요."
+          value={userId || ''}
+          onChange={(e) => setId(e.target.value)}
+        ></input>
+      </div>
+      <div className="form-group">
+        <input
+          autoComplete="one-time-code"
+          className="form-control"
+          type="password"
+          placeholder="비밀번호를 입력해 주세요."
+          value={userPw || ''}
+          onChange={(e) => setPw(e.target.value)}
+        ></input>
+      </div>
+      <div align="center">
+        <button className="btn btn-primary" onClick={userLogin}>
+          로그인
+        </button>
+        <button className="btn btn-primary" onClick={moveToSignUpPage}>
+          회원가입
+        </button>
       </div>
     </div>
   );
