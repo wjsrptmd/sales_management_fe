@@ -10,13 +10,13 @@ export default function SignUpPageEnd() {
 
   return (
     <div className="custom_center">
-      회원가입 완료
+      <h3 align="center">회원가입 완료</h3>
       <br></br>
-      <br></br>
-      <br></br>
-      <button className="btn btn-primary w-lg" onClick={moveToLoginPage}>
-        로그인 화면으로 돌아가기
-      </button>
+      <div align="center">
+        <button className="btn btn-primary w-lg" onClick={moveToLoginPage}>
+          로그인 화면으로
+        </button>
+      </div>
     </div>
   );
 }

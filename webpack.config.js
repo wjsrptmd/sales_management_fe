@@ -43,6 +43,7 @@ module.exports = {
     new NodePolyfillPlugin(),
   ],
   devServer: {
+    static: path.resolve(__dirname, 'dist'),
     compress: true,
     port: 8888,
     historyApiFallback: true,

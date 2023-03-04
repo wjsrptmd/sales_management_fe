@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import '../css/steller.css';
 import '../css/custom.css';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 const { login, getSalt } = require('../api.js');
 const { createHashedPassword } = require('../util/pwCreater');
 
@@ -13,7 +12,7 @@ export default function LoginPage() {
   const navigate = useNavigate();
 
   function moveToSignUpPage() {
-    navigate('/LoginPage/SignUpPage');
+    navigate('/SignUpPage');
   }
 
   async function userLogin() {
@@ -44,7 +43,7 @@ export default function LoginPage() {
   return (
     <div className="custom_center">
       <div className="form-group">
-        <h3 align="center">Login</h3>
+        <h3 align="center">로그인</h3>
       </div>
       <div className="form-group">
         <input

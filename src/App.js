@@ -19,8 +19,8 @@ function App() {
         <Routes>
           <Route path={'/'} element={<RootPage />}></Route>
           <Route path={'/LoginPage'} element={<LoginPage />}></Route>
-          <Route path={'/LoginPage/SignUpPage'} element={<SignUpPage />}></Route>
-          <Route path={'/LoginPage/SignUpPage/End'} element={<SignUpPageEnd />}></Route>
+          <Route path={'/SignUpPage'} element={<SignUpPage />}></Route>
+          <Route path={'/SignUpEndPage'} element={<SignUpPageEnd />}></Route>
           <Route path={'/MainPage'} element={<MainPage />}></Route>
           <Route path={'/ErrorPage'} element={<ErrorPage />}></Route>
           <Route path={'/*'} element={<NotFoundPage />}></Route>

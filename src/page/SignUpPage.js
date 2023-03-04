@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../css/steller';
 import { useNavigate } from 'react-router-dom';
 const { findUserId, signup } = require('../api.js');
@@ -96,7 +95,7 @@ export default function SignUpPage() {
         const { password, salt } = await createHashedPassword(pw1);
         const res = await signup(id, password, salt);
         if (res.data['result']) {
-          navigate('/LoginPage/SignUpPage/End');
+          navigate('/SignUpEndPage');
         } else {
           const message = res.data['message'];
           console.log(`message : ${message}`);
@@ -114,7 +113,8 @@ export default function SignUpPage() {
 
   return (
     <div className="custom_center">
-      <h3>회원가입</h3>
+      <h3 align="center">회원가입</h3>
+      <br></br>
       <div>
         <h6 align="left" className="section-secondary-title">
           아이디
@@ -158,9 +158,11 @@ export default function SignUpPage() {
       </div>
       <br></br>
       <br></br>
-      <button id="signUpBtn" className="btn btn-primary w-lg" onClick={userSignup}>
-        가입하기
-      </button>
+      <div align="center">
+        <button id="signUpBtn" className="btn btn-primary w-lg" onClick={userSignup}>
+          가입하기
+        </button>
+      </div>
     </div>
   );
 }
