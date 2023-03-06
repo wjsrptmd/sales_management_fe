@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import '../css/loading';
 import '../css/custom';
+import '../css/steller.css';
 import { useNavigate } from 'react-router-dom';
 const { checkAuthorization } = require('../api.js');
 
@@ -11,7 +12,7 @@ export default function RootPage() {
       .then(function (res) {
         const authorized = res.data['success'];
         if (authorized) {
-          setTimeout(navigate('/MainPage'), 3000);
+          navigate('/MainPage');
         } else {
           navigate('/LoginPage');
         }

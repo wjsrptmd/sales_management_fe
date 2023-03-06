@@ -23,9 +23,9 @@ export default function LoginPage() {
         const { password, salt } = await createHashedPassword(userPw, originSalt);
         const loginRet = await login(userId, password);
         const result = loginRet.data['result'];
-        if (result == 'success') {
+        if (result === 'success') {
           navigate('/MainPage');
-        } else if (result == 'passwordFail') {
+        } else if (result === 'passwordFail') {
           console.log('password 가 틀렸습니다.');
           // TODO : dialog 처리
         } else {

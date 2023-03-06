@@ -1,4 +1,6 @@
 import React from 'react';
+import '../css/steller.css';
+import '../css/custom.css';
 import { useNavigate } from 'react-router-dom';
 
 export default function SignUpPageEnd() {
