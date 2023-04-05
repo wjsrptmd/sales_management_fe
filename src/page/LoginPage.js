@@ -17,26 +17,37 @@ export default function LoginPage() {
 
   async function userLogin() {
     try {
-      const saltRes = await getSalt(userId);
-      const originSalt = saltRes.data['salt'];
-      if (originSalt) {
-        const { password, salt } = await createHashedPassword(userPw, originSalt);
-        const loginRet = await login(userId, password);
-        const result = loginRet.data['result'];
-        if (result === 'success') {
-          navigate('/MainPage');
-        } else if (result === 'passwordFail') {
-          console.log('password 가 틀렸습니다.');
-          // TODO : dialog 처리
+      if (userId && userPw) {
+        const saltRes = await getSalt(userId);
+        const originSalt = saltRes.data['salt'];
+        if (originSalt) {
+          const { password, salt } = await createHashedPassword(userPw, originSalt);
+          const loginRet = await login(userId, password);
+          const result = loginRet.data['result'];
+          if (result === 'success') {
+            navigate('/MainPage');
+          } else if (result === 'passwordFail') {
+            console.log('password 가 틀렸습니다.');
+            // TODO : dialog 처리
+          } else {
+            // error 처리. 실제로 일어날 수 없는 상황.
+          }
         } else {
-          // error 처리. 실제로 일어날 수 없는 상황.
+          console.log('아이디가 없습니다.');
+          // TODO : dialog 처리
         }
       } else {
-        console.log('아이디가 없습니다.');
+        console.log('userId or  userPw is undefined');
         // TODO : dialog 처리
       }
     } catch (err) {
       console.log(err);
+    }
+  }
+
+  function handleOnKeyPress(e) {
+    if (e.key === 'Enter') {
+      userLogin();
     }
   }
 
@@ -52,6 +63,7 @@ export default function LoginPage() {
           placeholder="ID 를 입력해 주세요."
           value={userId || ''}
           onChange={(e) => setId(e.target.value)}
+          onKeyDown={handleOnKeyPress}
         ></input>
       </div>
       <div className="form-group">
@@ -62,6 +74,7 @@ export default function LoginPage() {
           placeholder="비밀번호를 입력해 주세요."
           value={userPw || ''}
           onChange={(e) => setPw(e.target.value)}
+          onKeyDown={handleOnKeyPress}
         ></input>
       </div>
       <div align="center">
